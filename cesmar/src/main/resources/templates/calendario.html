@@ -1,21 +1,67 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet"href="dycalendar.min.css">
-    <script src="dycalendar.min.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Calendario</title>
 </head>
+<body>
 
+<h2 th:text="${nomeMes} + ' ' + ${ano}"></h2>
 
+<!-- Exibir mensagem de erro se existir -->
+<div th:if="${erro}" style="color:red; font-weight:bold;">
+    <p th:text="${erro}"></p>
+</div>
 
-<script src="calendario.html">
+<table>
+    <thead>
+    <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="semana : ${#numbers.sequence(0,5)}">
+        <td th:each="diaIndex : ${#numbers.sequence(0,6)}"
+            th:with="pos=${semana*7 + diaIndex}"
+            th:if="${pos >= primeiroDiaSemana and (pos - primeiroDiaSemana) < diasDoMes.size()}"
+        >
+            <div>
+                <strong th:text="${diasDoMes[pos - primeiroDiaSemana].dayOfMonth}"></strong>
 
-</script>
+                <ul>
+                    <li th:each="nota : ${anotacoes[diasDoMes[pos - primeiroDiaSemana]]}" th:text="${nota}"></li>
+                </ul>
+
+                <form th:action="@{/anotar}" method="post">
+                    <input type="hidden" name="data" th:value="${data}">
+                    <input type="text" name="texto" placeholder="Anotar" size="10">
+                    <button type="submit">+</button>
+                </form>
+
+            </div>
+        </td>
+        <!-- Células vazias antes do 1º dia do mês ou após últimos dias -->
+<!--        <td th:if="${pos < primeiroDiaSemana or (pos - primeiroDiaSemana) >= diasDoMes.size()}"></td>-->
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
