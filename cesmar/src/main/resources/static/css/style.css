@@ -1,0 +1,283 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --cor-fundo-nav-bar: #011126 ;
+    --cor-fundo-nav-bar2: #022047 ;
+    --cor-letra-nav-bar: #FEFEFE ;
+    --cor-letra-nav-bar2: #DDE0E6 ;
+    --cor-letra-logo-span: #BBC6D7 ;
+    --cor-titulo-card-claro: #2685BF ;
+    --cor-titulo-card-escuro:#011126 ;
+    --cor-paragrafo-card: #737373 ;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:white;
+}
+
+/* NAVEGAÇÃO VAN-BAR */
+.menu-bar{
+    background-color: var(--cor-fundo-nav-bar);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 10;
+    border-radius: 0 0 10px;
+    position: relative;
+    position: fixed;
+}
+
+.logo{
+    color: var(--cor-letra-nav-bar);
+    font-size: 30px;
+}
+
+.logo span{
+    color: var(--cor-letra-logo-span);
+}
+
+.menu-bar ul{
+    list-style: none;
+    display: flex;
+}
+
+.menu-bar ul li{
+    padding: 10px 30px;
+    position: relative;
+}
+
+.menu-bar ul li a{
+    color: var(--cor-letra-nav-bar);
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: all 0.4s ease;
+}
+
+.menu-bar ul li a:hover{
+    color: white;
+    font-size: 1.4em;
+    padding: 3px;
+}
+
+.dropdown-menu{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: var(--cor-fundo-nav-bar);
+    border-radius: 10%;
+}
+
+.dropdown-menu ul{
+    display: none;
+}
+
+.menu-bar ul li:hover .dropdown-menu ul{
+    display: block;
+    margin: 10px;
+}
+
+.dropdown-menu ul li{
+   width: 150px;
+   padding:10px ;
+}
+
+.fas{
+ /*    float: right; */
+    margin-left: 10px;
+    padding-top: 3px;
+}
+/* NAVEGAÇÃO VAN-BAR FINAL */
+
+/* CARROSSEL AUTOMATICO*/
+/* Container do Carrossel */
+.container-carrossel {
+    position: relative; /* Importante para posicionar as ondas */
+    min-height: 100vh;
+    overflow: visible; /* Permite que as ondas apareçam fora do carrossel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carrossel */
+.carrossel {
+    width: 100%;
+    height: 70vh;
+    top: -3em;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+/* Slides */
+.slides {
+    display: flex;
+    transition: transform 1s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botões */
+button.esquerda, button.direita {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5em;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+button.esquerda { left: 10px; }
+button.direita { right: 10px; }
+
+/* Ondas Parallax */
+.ondas {
+    position: absolute; /* Relativo ao container-carrossel */
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    top: 30em;user-select: none;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.onda {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: url('img/onda.png') repeat-x;
+    background-size: contain;
+    opacity: 0.7;
+    animation: moverOndas linear infinite;
+}
+
+#onda1 {
+    bottom: 0;
+    animation-duration: 20s;
+    opacity: 1;
+}
+
+#onda2 {
+    bottom: 10px;
+    animation-duration: 15s;
+    opacity: 0.5;
+}
+
+@keyframes moverOndas {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* CARROSSEL AUTOMATICO FINAL*/
+
+/* SOBRE O CESMAR */
+.infoCesmar{
+    padding: 5em;
+    margin: 2em;
+}
+
+.titulo h1{
+    font-size: 4em;
+    text-align: center;
+    margin-top: -2em;
+    color: var(--cor-titulo-card-escuro);
+}
+
+.infoCesmar p{
+    font-size: 1.3em;
+    margin: 1em;
+}
+
+.titulo-autacao{
+    font-size: 1.5em;
+    text-align: center ;
+    padding: 2em;
+}
+
+/* CARD */
+.container-card{
+    max-width: 90%;
+    margin: auto;
+    overflow: auto;
+    padding: 0 4.5rem;
+}
+
+img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.card{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2em;
+    margin: 1em 0;
+    background-color: var(--cor-letra-nav-bar2);
+    border-radius: 20px;
+}
+
+.infos-cesmar h3{
+    font-size: 3em;
+    text-align: left;
+    margin: 22px;
+    color: var(--cor-titulo-card-claro);
+}   
+
+.infos-cesmar p{
+    font-size: 1.2em;
+    color: var(--cor-paragrafo-card);
+    margin: 22px;
+}   
+
+.btn{
+    padding: 2em;
+}
+
+.btn a{
+    padding: 1em;
+    text-decoration: none;
+    color: var(--cor-letra-nav-bar);
+    background-color: var(--cor-fundo-nav-bar2);
+    border-radius: 10px;
+    font-size: 1em;
+    transition: all 0.5s ease;
+}   
+
+.btn a:hover{
+    color: var(--cor-fundo-nav-bar);
+    background-color: var(--cor-letra-nav-bar2);
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.card img{
+    height: 400px;
+    width: 550px;
+}
+
+.card:nth-child(even) img{
+    order: 2;
+}
+
+/* SOBRE O CESMAR FINAL*/
