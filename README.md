@@ -47,10 +47,10 @@ Java / Spring Boot – Backend e gerenciamento de postagens
 Git & GitHub – Controle de versão e colaboração
 PostGre - Banco de dados
 
-👥 Equipe de Desenvolvimento
+Equipe de Desenvolvimento
 Projeto desenvolvido pelos aprendizes do Programa Jovem Aprendiz do Cesmar, no Polo de Aprendizagem, com o intuito de colocar em prática os conhecimentos aprendidos e criar algo que beneficie futuros aprendizes.
 Time: júlia Souza, Lívia Beatriz, Ingrid bini
 
-🏁 Conclusão
+Conclusão
 
 O Portal do Polo é mais do que um site — é uma ferramenta de apoio e comunicação, feita por aprendizes e para aprendizes, fortalecendo o vínculo entre educação, comunidade e oportunidades.
