@@ -77,4 +77,4 @@ Este projeto foi um esforço de aprendizado e desenvolvimento prático, realizad
 
 ## 🌟 Conclusão
 
-O Portal do Polo transcende a função de um simples site; ele se consolida como uma **ferramenta
+O Portal do Polo transcende a função de um simples site; ele se consolida como uma **ferramenta vital de apoio, comunicação e empoderamento**. É um testemunho do potencial dos aprendizes, que criaram uma solução duradoura que reforça o elo crucial entre educação, comunidade e oportunidades de carreira.
