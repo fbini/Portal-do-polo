@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vagas Abertas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Todas as Oportunidades</h1>
+    <a th:href="@{/vagas/nova}" class="btn-novo">➕ Adicionar Nova Vaga (Admin)</a>
+</header>
+
+<main id="lista-vagas">
+
+    <div th:each="vaga : ${listaVagas}" class="card-vaga">
+
+        <h2 th:text="${vaga.titulo}">Título da Vaga</h2>
+        <p><strong>Publicado em:</strong> <span th:text="${#temporals.format(vaga.dataPublicacao, 'dd/MM/yyyy')}"></span></p>
+        <p th:text="${vaga.descricao}">Descrição...</p>
+
+        <a th:href="@{/candidatar/{id}(id=${vaga.id})}" class="btn-candidatar">Candidatar-se</a>
+    </div>
+
+    <div th:if="${listaVagas.isEmpty()}">
+        <p>Nenhuma vaga ativa foi encontrada no momento.</p>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Nova Vaga</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Publicar Nova Vaga</h1>
+</header>
+
+<main>
+    <form th:action="@{/vagas/salvar}" th:object="${vaga}" method="post">
+
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" th:field="*{titulo}" required><br><br>
+
+        <label for="descricao">Descrição Completa:</label>
+        <textarea id="descricao" th:field="*{descricao}" rows="5" required></textarea><br><br>
+
+        <label for="requisitos">Requisitos Chave:</label>
+        <input type="text" id="requisitos" th:field="*{requisitos}"><br><br>
+
+        <button type="submit">Publicar Vaga</button>
+        <a th:href="@{/vagas}" class="btn-cancelar">Cancelar</a>
+    </form>
+</main>
+</body>
+</html>
