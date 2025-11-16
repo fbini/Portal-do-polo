@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.NoSuchElementException; // Importe esta classe
+import java.util.NoSuchElementException; // 👈 Importante para o tratamento de erro
 
 @Service
 public class VagaService {
@@ -16,6 +16,10 @@ public class VagaService {
 
     // Cria/Salva uma nova vaga
     public Vaga criarVaga(Vaga vaga) {
+        // Assume que 'nomeVaga' é usado em vez do antigo 'titulo'
+        if (vaga.getNomeVaga() == null || vaga.getNomeVaga().isEmpty()) {
+            throw new IllegalArgumentException("O nome da vaga é obrigatório.");
+        }
         vaga.setDataPublicacao(LocalDate.now());
         vaga.setStatus("ATIVA");
         return vagaRepository.save(vaga);
@@ -26,10 +30,9 @@ public class VagaService {
         return vagaRepository.findByStatus("ATIVA");
     }
 
-    // Busca uma vaga por ID (corrigido para retornar Vaga e lançar exceção se não encontrar)
-    public Vaga buscarVagaPorId(Long id) { // Retorna Vaga diretamente
-        // orElseThrow() desempacota o Optional. Se o ID não for encontrado,
-        // ele lança NoSuchElementException (que é convertida em erro 500/404 pelo Spring).
+    // Método CORRIGIDO: Busca uma vaga por ID.
+    // Lança NoSuchElementException se a vaga não for encontrada.
+    public Vaga buscarVagaPorId(Long id) {
         return vagaRepository.findById(id).orElseThrow(
                 () -> new NoSuchElementException("Vaga não encontrada com ID: " + id)
         );

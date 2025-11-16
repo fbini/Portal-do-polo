@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastrar Nova Vaga</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Nova Vaga</title>
 </head>
 <body>
-<header>
-    <h1>Publicar Nova Vaga</h1>
-</header>
+<h1>Cadastrar Nova Vaga</h1>
 
-<main>
-    <form th:action="@{/vagas/salvar}" th:object="${vaga}" method="post">
+<form th:action="@{/vagas/salvar}" th:object="${vaga}" method="post">
 
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" th:field="*{titulo}" required><br><br>
+    <div>
+        <label for="nomeVaga">Nome da Vaga:</label>
+        <input type="text" id="nomeVaga" th:field="*{nomeVaga}" required>
+    </div>
 
-        <label for="descricao">Descrição Completa:</label>
-        <textarea id="descricao" th:field="*{descricao}" rows="5" required></textarea><br><br>
+    <div>
+        <label for="empresaContratante">Empresa Contratante:</label>
+        <input type="text" id="empresaContratante" th:field="*{empresaContratante}" required>
+    </div>
 
-        <label for="requisitos">Requisitos Chave:</label>
-        <input type="text" id="requisitos" th:field="*{requisitos}"><br><br>
+    <div>
+        <label for="horarioFuncionamento">Horário de Funcionamento:</label>
+        <input type="text" id="horarioFuncionamento" th:field="*{horarioFuncionamento}" required>
+    </div>
 
-        <button type="submit">Publicar Vaga</button>
-        <a th:href="@{/vagas}" class="btn-cancelar">Cancelar</a>
-    </form>
-</main>
+    <div>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" th:field="*{descricao}" required></textarea>
+    </div>
+
+    <div>
+        <label for="requisitos">Requisitos Mínimos:</label>
+        <textarea id="requisitos" th:field="*{requisitos}" required></textarea>
+    </div>
+
+    <button type="submit">Salvar Vaga</button>
+</form>
+
+<p><a th:href="@{/vagas}">Voltar para a lista</a></p>
 </body>
 </html>
