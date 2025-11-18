@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+     <!-- DATA AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- DATA AOS  final-->
+    <link rel="shortcut icon" href="img/icone-branco-removebg-preview.png">
+    <!-- icones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- final icones -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/lista.css">
+    <title>Lista de Vagas</title>
+</head>
+<body>
+
+    <!-- NAV -->
+<div class="menu-bar">
+    <h1 class="logo"><a th:href="@{/index}"> Portal do <span>Polo</span></a></h1>
+    <ul>
+        <li><a th:href="@{/#inicio}">Início</a></li>
+        <li><a th:href="@{/sobre}">Sobre</a></li>
+        <li><a th:href="@{/index}">Eventos</a></li>
+        <li><a th:href="@{/vagas}">Vagas</a></li>
+        <li><a>Colaboradores <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-menu">
+                <ul>
+                    <li><a href="#">Time 1</a></li>
+                    <li><a href="#">Time 2</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<div class="Cursos">
+    <div class="titulo-vagas">
+        <h1> Aprendizagem do Polo </h1>
+        <p>O Polo Marista de Formação Tecnológica, localizado no CESMAR em Porto Alegre, é um espaço dedicado à aprendizagem técnica e humana de jovens da comunidade. Por meio de cursos, projetos e oficinas práticas, como informática, robótica, hardware, redes e recondicionamento de computadores, o Polo promove a inclusão digital, o desenvolvimento profissional e o protagonismo juvenil. Seu modelo de aprendizagem integra tecnologia, valores humanos e experiências reais de trabalho, preparando os participantes para o mercado e para a vida em sociedade.</p>
+    </div>
+</div>
+
+<!-- card dos cusos -->
+<div class="layout-vagas">
+    <aside class="lista-vagas" th:each="vaga : ${listaVagas}">
+        <h2>Cursos disponíveis</h2>
+
+        <a href="#vaga1" class="vaga-item">
+            <h3 th:text="${vaga.nomeVaga}"> Nome da vaga</h3>
+            <p>Empresas contratantes:  <span th:text="${vaga.empresaContratante}">Empresa XYZ</span> </p>
+        </a>
+
+        <a th:href="/vagas/excluir/${vaga.id}" onclick="return confirm('Tem certeza que deseja excluir esta vaga');"> Excluir</a>
+    </aside>
+
+    <!-- Detalhes da vaga -->
+    <div class="detalhes-vaga">
+        <div id="vaga1" class="detalhe-card">
+            <h2 th:text="${vaga.nomeVaga}">Nome da vaga</h2>
+            <p>Empresas contratantes:  <span th:text="${vaga.empresaContratante}">Empresa XYZ</span> </p>
+            <p>Inicio das inscrições: 10/0/2000 <br>
+                Encerramento das inscrições: 10/0/2000 </p>
+            <p>Local curso: </p>
+            <p><strong>Horário:</strong> <span th:text="${vaga.horarioFuncionamento}">8h às 17h</span></p>
+            <h3> Descrição </h3>
+            <p th:text="${vaga.descricao}">Descrição da vaga...</p>
+            <h3>Requisitos: </h3>
+            <ul th:text="${vaga.requisitos}">
+                <li>alguma cosa</li>
+            </ul>
+            <button class="btn-candidatar"> Candidatar-se</button>
+        </div>
+
+        </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer_content">
+        <div class="footer_sobre_nos">
+            <img src="/img/footer.png" alt="">
+        </div>
+
+        <div class="navegacao">
+            <div class="endereco">
+                <h1>Endereço</h1>
+                <h3>Estr. Antônio Severino, 1493 - Rubem Berta</h3>
+            </div>
+            <div class="contato">
+                <h1>Telefone</h1>
+                <h3>(51) 3086-2300</h3>
+            </div>
+            <div class="email">
+                <h1>Email</h1>
+                <h3>cesmar@maristas.org.br</h3>
+            </div>
+        </div>
+
+        <div class="footer_redes_sociais">
+            <a href="#" class="footer_link"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="footer_link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer_link"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <div class="footer_copyright">
+        © 2025 Todos os direitos reservados
+    </div>
+</footer>
+
+
+<!-- <h1>Vagas Disponíveis</h1>
+
+<div th:each="vaga : ${listaVagas}">
+    <h2 th:text="${vaga.nomeVaga}">Nome da Vaga</h2> <p><strong>Empresa:</strong> <span th:text="${vaga.empresaContratante}">Empresa XYZ</span></p> <p><strong>Horário:</strong> <span th:text="${vaga.horarioFuncionamento}">8h às 17h</span></p> <p><strong>Descrição:</strong> <span th:text="${vaga.descricao}">Descrição da vaga...</span></p>
+    <p><strong>Requisitos:</strong> <span th:text="${vaga.requisitos}">Requisitos mínimos...</span></p>
+
+    <p>
+        <a th:href="@{/candidatar/{id}(id=${vaga.id})}">Candidatar-se</a> </p>
+    <hr> -->
+</div>
+</body>
+</html>

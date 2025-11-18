@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidatar-se | <span th:text="${vaga.nomeVaga}"></span></title>
+</head>
+<body>
+<h1>Candidatura para Vaga: <span th:text="${vaga.nomeVaga}">Título da Vaga</span></h1>
+<p><strong>Empresa:</strong> <span th:text="${vaga.empresaContratante}">Empresa XYZ</span></p>
+<p><strong>Horário:</strong> <span th:text="${vaga.horarioFuncionamento}">8h às 17h</span></p>
+<p><strong>Descrição:</strong> <span th:text="${vaga.descricao}">...</span></p>
+<p><strong>Requisitos:</strong> <span th:text="${vaga.requisitos}">...</span></p>
+
+<hr>
+
+<h2>Seus Dados</h2>
+<form th:action="@{/candidatar/salvar}" th:object="${candidatura}" method="post">
+
+    <input type="hidden" name="vagaId" th:value="${vaga.id}" />
+
+    <div>
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" th:field="*{nomeCandidato}" required>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required>
+    </div>
+
+    <div>
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" th:field="*{telefone}">
+    </div>
+
+    <div>
+        <label for="curriculo">Link para Currículo (URL):</label>
+        <input type="url" id="curriculo" th:field="*{linkCurriculo}" required>
+    </div>
+    <br>
+
+    <button type="submit">Enviar Candidatura</button>
+</form>
+
+<p><a th:href="@{/vagas}">Voltar para as vagas</a></p>
+</body>
+</html>

@@ -1,0 +1,339 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: auto; /* impede a rolagem automática ao clicar */
+    overflow-anchor: none;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:white;
+}
+
+:root{
+    --cor-fundo-nav-bar: #011126 ;
+    --cor-fundo-nav-bar2: #022047 ;
+    --cor-letra-nav-bar: #FEFEFE ;
+    --cor-letra-logo-span: #BBC6D7 ;
+    --cor-titulo-card-claro: #2685BF ;
+    --cor-titulo-card-escuro:#011126 ;
+    --cor-paragrafo-card: #737373 ;
+}
+
+/* NAVEGAÇÃO VAN-BAR */
+.menu-bar{
+    background-color: var(--cor-fundo-nav-bar);
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw; /* Largura relatica ao viewport ou seja pela tela */
+    z-index: 10;
+    border-radius: 0 0 10px;
+    position: relative;
+    position: fixed;
+}
+
+.logo{
+    color: var(--cor-letra-nav-bar);
+    font-size: 30px;
+}
+
+.logo span{
+    color: var(--cor-letra-logo-span);
+}
+
+.menu-bar ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-bar ul li{
+    padding: 1em 2vw;
+    position: relative;
+}
+
+.menu-bar ul li a{
+    color: var(--cor-letra-nav-bar);
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: all 0.4s ease;
+}
+
+.menu-bar ul li a:hover{
+    color: white;
+    font-size: 1.4em;
+    padding: 3px;
+}
+
+.dropdown-menu{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: var(--cor-fundo-nav-bar);
+    border-radius: 10%;
+}
+
+.dropdown-menu ul{
+    display: none;
+}
+
+.menu-bar ul li:hover .dropdown-menu ul{
+    display: block;
+    margin: 10px;
+}
+
+.dropdown-menu ul li{
+   width: 150px;
+   padding:10px ;
+}
+
+.fas{
+ /*    float: right; */
+    margin-left: 10px;
+    padding-top: 3px;
+}
+/* NAVEGAÇÃO VAN-BAR FINAL */
+
+.Cursos{
+    padding: 10%;
+}
+
+.titulo-vagas h1{
+    font-size: 3em;
+    text-align: center;
+    margin: 2%;
+    margin-top: 0.5em;
+    color: var(--cor-fundo-nav-bar2);
+}
+
+.titulo-vagas p{
+    font-size: 1.5em;
+    text-align: center;
+    margin: 2%;
+    color: var(--cor-fundo-nav-bar2);
+}
+
+/* card cursos */
+
+/* busca */
+.layout-vagas{
+    display: flex;
+    height: auto;
+    margin-top: -7em;
+    min-height: 100vh - 80px;
+    border-top: 2px solid var(--cor-titulo-card-claro);
+}
+
+.lista-vagas{
+    width: 35%;
+    border-right: 1px solid var(--cor-fundo-nav-bar);
+    box-shadow: inset 5px 5px 5px rgba(254, 254, 254, 0.05),
+        inset -5px -5px 5px rgba(235, 235, 235, 0.171),
+        5px 5px 5px #BBC6D7,
+        -5px -5px 5px rgb(0, 0, 0, 0.05);
+        border-radius: 5%;
+        margin: 3%;
+    padding: 2%;
+    overflow-y: auto;
+}
+
+.lista-vagas h2{
+    margin-bottom: 15px;
+    color: var(--cor-fundo-nav-bar);
+    font-size: 2em;
+}
+
+.vaga-item{
+    display: block;
+    background-color: var(--cor-letra-logo-span);
+    border-radius: 20px;
+    padding: 5%;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--cor-fundo-nav-bar2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.274);
+    transition: 0.3s ease;
+}
+
+.vaga-item:hover{
+    background-color: var(--cor-letra-nav-bar);
+}
+
+.vaga-item span{
+    background-color: var(--cor-paragrafo-card);
+    color: var(--cor-letra-nav-bar);
+    padding: 2px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+}
+
+/* detalhes da vaga */
+.detalhes-vaga{
+    flex: 1;
+    padding: 5%;
+    overflow: auto;
+    position: relative;
+    text-align: left;
+}
+
+.detalhe-card{
+    display: none;
+    animation: fadeIn 0.4s ease;
+     scroll-margin-top: 9999px; /* evita scroll automático */
+}
+
+.detalhe-card h2{
+    font-size: 2em;
+    color: var(--cor-fundo-nav-bar2);
+}
+
+.detalhe-card h3{
+    font-size: 1.5em;
+    color: var(--cor-fundo-nav-bar2);
+}
+
+.detalhe-card p{
+    font-size: 1.1em;
+    margin: 3%;
+    margin-left: -0.5em;
+    color: var(--cor-fundo-nav-bar);
+}
+
+.detalhe-card p span{
+    font-size: 1.1em;
+    color: var(--cor-titulo-card-claro);
+}
+
+.detalhe-card ul{
+    font-size: 1.1em;
+    list-style: none;
+}
+
+/* mostar apenas o card selcionado */
+.detalhe-card:target{
+    display: block;
+}
+
+:target{
+    scroll-margin-top: 9000px; /* faz o navegador não puxar o conteúdo */
+}
+
+.btn-candidatar{
+    background-color: var(--cor-fundo-nav-bar2);
+    color: var(--cor-letra-nav-bar);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin:2em -0.2em;
+    transition: all 0.3s ease;
+}
+
+.btn-candidatar:hover{
+    background-color: var(--cor-letra-logo-span);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FOOTER */
+footer {
+    background-color: #022047;
+    width: 100%;
+    color: white;
+}
+
+.footer_content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 3% 3.5%;
+}
+
+.footer_sobre_nos h1 {
+    font-size: x-large;
+    margin-top: -2em;
+    padding: 1% 10%;
+    margin-left: 7%;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.footer_sobre_nos h1:hover {
+    opacity: 0.5;
+}
+
+.footer_content img {
+    width: 55%;
+    height: 75%;
+}
+
+.navegacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: medium;
+}
+
+.navegacao h1 {
+    padding: 2%;
+    font-size: 1.3em;
+    color: var(--cor-letra-logo-span);
+    transition: 0.4s;
+}
+
+.navegacao h3 {
+    padding: 2% 2.5%;
+    font-size: 1em;
+}
+
+.footer_redes_sociais {
+    display: flex;
+    flex-direction: column;
+    gap: 18%;
+    margin-top: 1.5%;
+    padding: 2% 2.5%;
+}
+
+.footer_redes_sociais .footer_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    transition: all 0.4s;
+}
+
+.footer_link {
+    text-decoration: none;
+}
+
+.footer_redes_sociais .footer_link:hover {
+    opacity: 0.5;
+}
+
+.footer_link i {
+    color: white;
+    font-size: 24px;
+}
+
+.footer_copyright {
+    font-size: small;
+    color: white;
+    margin-left: 2em;
+}

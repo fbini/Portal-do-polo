@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --cor-fundo-nav-bar: #011126 ;
+    --cor-fundo-nav-bar2: #022047 ;
+    --cor-letra-nav-bar: #FEFEFE ;
+    --cor-letra-logo-span: #BBC6D7 ;
+    --cor-titulo-card-claro: #2685BF ;
+    --cor-titulo-card-escuro:#011126 ;
+    --cor-paragrafo-card: #737373 ;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:white;
+}
+
+/* NAVEGAÇÃO NAV-BAR */
+.menu-bar{
+    background-color: var(--cor-fundo-nav-bar);
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+    z-index: 9999;
+    border-radius: 0 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.logo a{
+    color: var(--cor-letra-nav-bar);
+    margin: 1em;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.logo span{
+    color: var(--cor-letra-logo-span);
+}
+
+.menu-bar ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-bar ul li{
+    padding: 1em 2vw;
+    position: relative;
+}
+
+.menu-bar ul li a{
+    color: var(--cor-letra-nav-bar);
+    text-decoration: none;
+    font-size: 1.2em;
+    display: inline-block;
+    transition: all 0.4s ease;
+}
+
+.menu-bar ul li a:hover{
+    color: var(--cor-letra-logo-span);
+    transform: scale(1.15) translateY(-2px);
+}
+
+.dropdown-menu{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: var(--cor-fundo-nav-bar);
+}
+
+.dropdown-menu ul{
+    display: none;
+}
+
+/* nav bar final */
+
+.container-vagas{
+    width:35%;
+    padding: 2.5em;
+    border: 2px solid var(--cor-titulo-card-claro);
+    margin-top: 12vh;
+    border-radius: 20px;
+    margin: 6% auto;
+}
+
+.titulo h1{
+    font-size: 2.6em;
+    color: var(--cor-fundo-nav-bar2);
+    margin: .7em;
+    text-align: center;
+}
+
+label{
+    display: block;
+    text-align: left;
+    font-size: 1.3em;
+    color: var(--cor-titulo-card-escuro);
+}
+
+input{
+    width: 100%;
+    padding: 0.8em;
+    margin-top: 0.5em;
+    border: 1px solid var(--cor-letra-logo-span);
+    color: var(--cor-titulo-card-escuro);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+input:hover{
+    width: 100%;
+    padding: 0.8em;
+    margin-top: 0.5em;
+    border: 1px solid var(--cor-titulo-card-claro);
+    border-radius: 5px;
+}
+
+button{
+    width: 80%;
+    padding: 1em;
+    font-size:1.1em;
+    border: none;
+    background-color: var(--cor-titulo-card-claro);
+    border-radius: 10px;
+    color: var(--cor-letra-nav-bar);
+    margin-top: 1em;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 10%;   
+    transition: all 0.3s ease ;
+}
+
+button:hover{
+    background-color: var(--cor-letra-logo-span);
+}
+
+/* FOOTER */
+footer {
+    background-color: #022047;
+    width: 100%;
+    color: white;
+}
+
+.footer_content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 3% 3.5%;
+}
+
+.footer_content img {
+    width: 65%;
+    height: 90%;
+}
+
+.navegacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: medium;
+}
+
+.navegacao h1 {
+    padding: 2%;
+    font-size: 1.3em;
+    color: var(--cor-letra-logo-span);
+    transition: 0.4s;
+}
+
+.navegacao h3 {
+    padding: 2% 2.5%;
+    font-size: 1em;
+}
+
+.footer_redes_sociais {
+    display: flex;
+    flex-direction: column;
+    gap: 18%;
+    margin-top: 1.5%;
+    padding: 2% 2.5%;
+}
+
+.footer_redes_sociais .footer_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    transition: all 0.4s;
+}
+
+.footer_link {
+    text-decoration: none;
+}
+
+.footer_redes_sociais .footer_link:hover {
+    opacity: 0.5;
+}
+
+.footer_link i {
+    color: white;
+    font-size: 24px;
+}
+
+.footer_copyright {
+    font-size: small;
+    color: var(--cor-letra-logo-span);
+    margin-left: 3.5em;
+}
+
+
+
